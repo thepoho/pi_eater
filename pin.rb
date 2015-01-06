@@ -17,7 +17,7 @@ class Pin
     raise "Not a GPIO pin" unless gpio?
     raise "Invalid direction" unless %w{in out}.include? dir.to_s
     @direction = dir.to_sym
-    @pin_object = PiPiper::Pin.new(pin: @pin, direction: @direction)
+    @pin_object = PiPiper::Pin.new(pin: @gpio, direction: @direction)
   end 
 
   def initialised?
@@ -32,8 +32,10 @@ class Pin
    
     @out_state = state.to_sym
     if @out_state == :on
+      puts "------ setting on -----"
       @pin_object.on
     else
+      puts "------ setting off -----"
       @pin_object.off
     end
   end
