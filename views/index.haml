@@ -1,0 +1,58 @@
+.row
+  .col-xs-12
+    
+    %table.table
+      %tr
+        %th Pin #
+        %th Name
+        %th Direction
+        %th State
+        %th{colspan: 2}
+          %a.reload.btn.btn-primary.btn-sm{href:'#'}Reload
+        %th State
+        %th Direction
+        %th Name
+        %th Pin #
+      
+      - x = 1
+      - while x < 40 do
+        %tr
+          - pin = @pins[x]
+          %td{class: "pin_#{x}", data: {pin: x}}= x
+          %td{class: "pin_#{x}", data: {pin: x}} #{pin.name} #{pin.desc}
+          %td{class: "pin_#{x}", data: {pin: x}}
+            - if pin.gpio?
+              %select.direction
+                %option{value: ""}Not Set
+                %option{value: "out"}Out
+                %option{value: "in"}In
+
+          %td.state{class: "pin_#{x}", data: {pin: x}}
+            - if pin.gpio?
+              %span.state
+              %select.state
+                %option{value: "off"}Off
+                %option{value: "on"}On
+          %td.pin{class: "pin_#{x}", data: {pin: x}, style: "width: 30px"} &nbsp;
+
+
+
+          - x += 1
+          - pin = @pins[x]
+          %td.pin{class: "pin_#{x}", data: {pin: x}, style: "width: 30px"} &nbsp;
+          %td.state{class: "pin_#{x}", data: {pin: x}}
+            - if pin.gpio?
+              %span.state
+              %select.state
+                %option{value: "off"}Off
+                %option{value: "on"}On
+          %td{class: "pin_#{x}", data: {pin: x}}
+            - if pin.gpio?
+              %select.direction
+                %option{value: ""}Not Set
+                %option{value: "out"}Out
+                %option{value: "in"}In
+
+          %td{class: "pin_#{x}", data: {pin: x}} #{pin.name} #{pin.desc}
+          %td{class: "pin_#{x}", data: {pin: x}}= x
+          - x += 1

@@ -1,0 +1,25 @@
+table.lamps tr td{
+  border: 1px solid;
+  width: 50px;
+  text-align: center;
+}
+table.switches tr td{
+  border: 1px solid;
+  width: 50px;
+  text-align: center;
+}
+
+span.state-on{
+  background-color: lightblue;
+}
+span.state-off{
+  background-color: white;
+}
+
+td.heading{
+  background-color: lightpink;
+}
+
+select.state{
+  display: none;
+}
