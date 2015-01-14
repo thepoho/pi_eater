@@ -33,13 +33,18 @@
               %select.state
                 %option{value: "off"}Off
                 %option{value: "on"}On
-          %td.pin{class: "pin_#{x}", data: {pin: x}, style: "width: 30px"} &nbsp;
+          %td.pin{class: "pin_#{x}", data: {pin: x}, style: "width: 30px"}
+            - if x == 1
+              %i.fa.fa-square-o
+            - else
+              %i.fa.fa-dot-circle-o
 
 
 
           - x += 1
           - pin = @pins[x]
-          %td.pin{class: "pin_#{x}", data: {pin: x}, style: "width: 30px"} &nbsp;
+          %td.pin{class: "pin_#{x}", data: {pin: x}, style: "width: 30px"}
+            %i.fa.fa-dot-circle-o
           %td.state{class: "pin_#{x}", data: {pin: x}}
             - if pin.gpio?
               %span.state
